@@ -8,12 +8,12 @@ const sumAll = function (x, y) {
     } else if (x <= y && Number.isInteger(x) && Number.isInteger(y)) {
 
         let n = (y - x) + 1
-        let sumAll = n * (n + 1) / 2
+        let sumAll = n * (x + y) / 2
 
         return sumAll
     } else if (x > y && Number.isInteger(x) && Number.isInteger(y)) {
         let n = (x - y) + 1
-        let sumAll = n * (n + 1) / 2
+        let sumAll = n * (x + y) / 2
 
         return sumAll
     } else {
