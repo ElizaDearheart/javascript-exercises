@@ -1,42 +1,21 @@
-const findTheOldest = function () {
+const findTheOldest = function (people) {
 
-    const people = [
-        {
-            name: "Carly",
-            yearOfBirth: 1942,
-            yearOfDeath: 1970,
-        },
-        {
-            name: "Ray",
-            yearOfBirth: 1962,
-            yearOfDeath: 2011,
-        },
-        {
-            name: "Jane",
-            yearOfBirth: 1912,
-            yearOfDeath: 1941,
-        },
-    ]
-
-    let oldestPerson;
-
-    let listByAges = people.sort(function (a, b) {
-        let lastGuy = a.yearOfDeath - a.yearOfBirth;
-        let nextGuy = b.yearOfDeath - b.yearOfBirth;
-
-        return lastGuy > nextGuy ? 1 : -1;
+    return people.reduce((oldest, currentPerson) => {
+        let oldestAge = getAge(oldest.yearOfBirth, oldest.yearOfDeath);
+        let currentAge = getAge(currentPerson.yearOfBirth, currentPerson.yearOfDeath);
+        return oldestAge < currentAge ? currentPerson : oldest;
     })
 
-    oldestPerson = listByAges.pop()
-    return oldestPerson
 };
 
-/*
-if (!yearOfDeath) {
-            let lastGuy = a.Date() - a.yearOfBirth;
-            let nextGuy = b.Date() - b.yearOfBirth
-        }
-*/
+let getAge = function (birth, death) {
+    if (!death) {
+        death = new Date().getFullYear();
+    }
+    return death - birth;
+};
+
+
 
 // Do not edit below this line
 module.exports = findTheOldest;
